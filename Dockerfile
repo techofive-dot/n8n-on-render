@@ -1,21 +1,20 @@
-# Use official Node.js image
-FROM node:18
+# Use Node 18 base image
+FROM node:18-alpine
 
 # Install n8n globally
 RUN npm install -g n8n
 
 # Create working directory
-WORKDIR /data
+WORKDIR /home/node/.n8n
 
-# Expose n8n default port
+# Expose the n8n port
 EXPOSE 5678
 
-# Set required environment variables
-ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+# Environment variables
 ENV N8N_PORT=5678
 ENV N8N_HOST=0.0.0.0
 ENV GENERIC_TIMEZONE=Asia/Karachi
+ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
 
-# Start n8n when container runs
-ENTRYPOINT ["n8n"]
-CMD ["start"]
+# Command to start n8n
+CMD ["sh", "-c", "n8n start"]
