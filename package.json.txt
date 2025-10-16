@@ -1,0 +1,7 @@
+{
+  "name": "n8n-on-render",
+  "version": "1.0.0",
+  "description": "Deploy n8n on Render",
+  "main": "index.js",
+  "license": "MIT"
+}
